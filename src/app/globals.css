@@ -10,28 +10,6 @@
     --color-black:#09090B;
     --color-white:#FFFFFF;
 }
-/* Global styles for light mode (default) */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-}
-
-/* Styles applied when the 'dark' class is present on the html element */
-html.dark {
-  --bg-color: #1a1a1a;
-  --text-color: #ffffff;
-}
-
-/* Apply variables to elements */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-}
-
-
-
-
 
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);

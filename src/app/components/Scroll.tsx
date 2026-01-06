@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
-import {Bigpic} from "./Bigpic"
+import { Bigpic } from "./Bigpic";
 
 import {
   Carousel,
@@ -8,40 +8,40 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/app/ui/Carousel"
+} from "@/app/ui/Carousel";
 
-export type Movie={
+export type Movie = {
   id: number;
-    title: string;
-    poster_path: string;
-    vote_average: number;
-    backdrop_path:string;
-    overview: string;
-}
-
-const fetchfromNowPlayingMovieDB = async ()=>{
-      const response = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-    {
-      method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_API_TOKEN}`
-    },
-});
-const data = await response.json();
-return data.results;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  backdrop_path: string;
+  overview: string;
 };
 
- const Scroll = async()=>{
-    const nowplayingMovies: Movie[] = await fetchfromNowPlayingMovieDB();
-    
+const fetchfromNowPlayingMovieDB = async () => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_API_TOKEN}`,
+      },
+    }
+  );
+  const data = await response.json();
+  return data.results;
+};
+
+export const Scroll = async () => {
+  const nowplayingMovies: Movie[] = await fetchfromNowPlayingMovieDB();
 
   return (
-  <Carousel className="w-full">
+    <Carousel className="w-full">
       <CarouselContent>
         {nowplayingMovies.map((movie) => (
-          <CarouselItem
-            key={movie.id}>
+          <CarouselItem key={movie.id}>
             <Bigpic movie={movie} />
           </CarouselItem>
         ))}
@@ -51,4 +51,5 @@ return data.results;
     </Carousel>
   );
 };
-export default Scroll;
+
+

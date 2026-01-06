@@ -1,14 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    TMDB_BASE_URL: process.env.TMDB_BASE_URL ?? "",
+    TMDB_API_TOKEN: process.env.TMDB_API_TOKEN ?? "",
+  },
+
   reactCompiler: true,
 
   images: {
-    domains: ["image.tmdb.org"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        pathname: "/t/p/**", // TMDB image paths
+      },
+    ],
   },
-
 };
 
 export default nextConfig;
-

@@ -1,6 +1,5 @@
 import React from 'react'
-import Image from "next/image";
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from './MovieCard';
 
 export type Movie={
   id: number;
@@ -11,8 +10,8 @@ export type Movie={
     overview: string;
 }
 
-export const fetchfromUpcomingMovieDB = async (category: string)=>{
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${category}`,
+export const Category = async (category: string)=>{
+      const response = await fetch(`https://api.themoviedb.org/3/movie/genre/movie/list?language=en`,
     {
       method: "GET",
     headers: {
@@ -25,17 +24,15 @@ return data.results;
 };
 
  const Upcoming = async()=>{
-   const upcomingMovies: Movie[] = await fetchfromUpcomingMovieDB("upcoming");
+   const categoryMovies: Movie[] = await Category("Category");
    
   return (
     <div>
-       <h3 className="font-semibold text-2xl text-black pr-20 pl-20 pb-5">Upcoming movies</h3>
       <div className="grid grid-cols-5 pr-20 pl-20 h-244.5 w-full">
-        {upcomingMovies.slice(0,10).map((movie)=>(
+        {categoryMovies.slice(0,10).map((movie)=>(
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
     </div>
   )
 }
-export default Upcoming;
