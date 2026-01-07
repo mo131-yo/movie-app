@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { MovieCard } from './MovieCard';
 
 
 export type Movie = {
@@ -11,9 +12,8 @@ export type Movie = {
   vote_average: number;
   backdrop_path: string;
   overview: string;
-  release_date?: string;
+  release_date :string
 };
-
 type Props = {
   keyword: string;
   results: Movie[];
@@ -35,16 +35,9 @@ export const SearchResult = ({ keyword, results, onClose }: Props) => {
               <span className="font-medium">{movie.title}</span>
               <span className="text-sm text-gray-500">({movie.release_date?.split("-")[0]} )</span>
             </div>
-            {/* <Link href={`/movie/${movie.id}/result`} onClick={onClose}>
-            <Button className="w-30 h-9 bg-amber-200 ">daraach</Button>
-            </Link> */}
-
-          <Link href={`/movie/${movie.id}`} target="_blank" onClick={onClose}>
+          <Link href={`/movie/${movie.id}`} onClick={onClose}>
             <Button className="w-30 h-9 bg-amber-200">View</Button>
           </Link>
-
-
-
           </div>
         );
       })}

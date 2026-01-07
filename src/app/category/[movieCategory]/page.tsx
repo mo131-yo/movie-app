@@ -21,7 +21,7 @@ export default async function Page ({
         </div>
         <div className="grid grid-cols-5 pr-20 pl-20 w-full pt-20 pb-20 gap-15">
             {movies.map((movie)=> (
-                <MovieCard key={movie.id}  movie={movie}/>
+                <MovieCard key={movie.id} movie={movie}/>
             ))}
         </div>
       </div>

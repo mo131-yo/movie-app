@@ -5,7 +5,8 @@ import Toprated from "./components/Toprated";
 import { Scroll } from "./components/Scroll";
 import Link from "next/link";
 import { hover } from "motion"
-
+import { fetchMovieById } from "@/lib/tmdb";
+import { MovieCard } from "@/app/components/MovieCard";
 export type Movie = {
   id: number;
   title: string;
@@ -13,7 +14,7 @@ export type Movie = {
   vote_average: number;
   overview: string;
 };
-export default function Home() {
+export default async function Home() {
   return (
     <div >
       <Scroll />
@@ -41,3 +42,4 @@ export default function Home() {
     </div>
   );
 }
+
