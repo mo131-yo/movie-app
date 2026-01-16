@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import { MovieCard } from "./MovieCard";
+import { DynamicPagination} from "@/app/components/DynamicPagination"
 
 export type Movie={
   id: number;
@@ -34,6 +35,7 @@ return data.results;
           <MovieCard movie={movie} key={movie.id}/>
         ))}
       </div>
+      < DynamicPagination totalPage={1} />
     </div>
   )
 }

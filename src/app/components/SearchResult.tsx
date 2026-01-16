@@ -39,9 +39,9 @@ export const SearchResult = ({ keyword, results, onClose }: Props) => {
           </div>
         );
       })}
-       <Link href={`/movie`} onClick={onClose}>
-          <p className='text-lg text-black ' onClick={onClose}>Results</p>
-       </Link>
+       <Link href={`/results/${results.id}`} onClick={onClose}>
+            <Button className="w-30 h-9 bg-amber-200">Results</Button>
+          </Link>
     </div>
   );
 }

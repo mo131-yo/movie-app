@@ -96,7 +96,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           </div>
           <div className="flex items-center gap-1 text-sm mt-1 text-gray-600 dark:text-gray-300">
             <Image src="/star.png" alt="star" width={12} height={12} />
-            <span>{movie.vote_average.toFixed(1)}</span>
+            <p>{movie.vote_average.toFixed(1)}<span className="opacity-50">/10</span></p>
           </div>
         </div>
 

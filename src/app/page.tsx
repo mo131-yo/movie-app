@@ -20,7 +20,7 @@ export default async function Home() {
         href="/category/popular"
         className="flex flex-row-reverse pt-4 pb-4 pl-6 pr-6"
       >
-        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">Daraach
+        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">See more
           <HiArrowSmallRight />
         </Button>
       </Link>
@@ -29,7 +29,7 @@ export default async function Home() {
         href="/category/upcoming"
         className="flex flex-row-reverse pt-2 pb-2 pl-4 pr-4 "
       >
-        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">Daraach
+        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">See more
           <HiArrowSmallRight />
         </Button>
       </Link>
@@ -38,7 +38,7 @@ export default async function Home() {
         href="/category/top_rated"
         className="flex flex-row-reverse pt-2 pb-2 pl-4 pr-4"
       >
-        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">Daraach
+        <Button className="w-30 h-9 mt-8 hover:bg-gray-600 hover:text-white">See more
           <HiArrowSmallRight />
         </Button>
       </Link>
