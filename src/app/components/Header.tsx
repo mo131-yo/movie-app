@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { SlArrowDown } from "react-icons/sl";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
-import {Genre} from "./Genre";
+import {SearchGenre} from "./SearchGenre";
 import Link from "next/link";
 import { motion } from "framer-motion"; 
 
@@ -63,7 +63,7 @@ export const Header = () => {
       </div>
      {/* genre */}
       <div className="w-full flex justify-center relative gap-3" >
-        <Genre keyword={""} results={[]} onClose={function (): void {
+        <SearchGenre keyword={""} results={[]} onClose={function (): void {
           throw new Error("Function not implemented.");
         } } />
         {/* {Search heseg} */}
