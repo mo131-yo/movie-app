@@ -42,7 +42,7 @@ const Results = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className='pb-20'>
-      <h3 className="font-semibold text-2xl text-black pr-20 pl-20 pb-5">Search Results</h3>
+      <h3 className="font-semibold text-2xl text-black pr-20 pl-20 pb-5">More Like This</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pr-20 pl-20 gap-8">
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />

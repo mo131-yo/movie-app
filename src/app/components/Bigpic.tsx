@@ -1,138 +1,10 @@
-// "use client";
-
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useState } from "react";
-// import { IoClose } from "react-icons/io5";
-
-// type Movie = {
-//   id: number;
-//   title: string;
-//   backdrop_path: string | null;
-//   vote_average: number;
-//   overview: string;
-// };
-
-// type BigpicProps = {
-//   movie: Movie;
-// };
-
-// export const Bigpic: React.FC<BigpicProps> = ({ movie }) => {
-//   const { title, vote_average, overview, backdrop_path } = movie;
-
-//   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
-//   const [loadingTrailer, setLoadingTrailer] = useState(false);
-//   const [error, setError] = useState<string | null>(null);
-
-//   const handleTrailerClick = async () => {
-//     try {
-//       setLoadingTrailer(true);
-//       setError(null);
-
-//       const res = await fetch(
-//         `https://api.themoviedb.org/3/movie/${movie.id}/videos`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-
-//       if (!res.ok) throw new Error("Failed to fetch trailer");
-
-//       const data = await res.json();
-//       const trailer = data.results.find(
-//         (v: any) => v.type === "Trailer" && v.site === "YouTube"
-//       );
-
-//       if (trailer) {
-//         setTrailerUrl(`https://www.youtube.com/embed/${trailer.key}`);
-//       } else {
-//         setError("Trailer not found");
-//         setTrailerUrl(null);
-//       }
-//     } catch (err) {
-//       setError("Error loading trailer");
-//       setTrailerUrl(null);
-//       console.error(err);
-//     } finally {
-//       setLoadingTrailer(false);
-//     }
-//   };
-
-//   const closeTrailer = () => setTrailerUrl(null);
-
-//   return (
-//     <div className="relative w-full h-125 sm:h-[420px] md:h-[520px] lg:h-[600px] rounded-xl overflow-hidden">
-//       {trailerUrl ? (
-//         // {Trailer} 
-//         <div className="w-full h-full flex flex-col items-center justify-center bg-black">
-//           <button
-//             onClick={closeTrailer}
-//             className="absolute top-4 right-4 text-white text-3xl p-2 hover:text-red-400"
-//           >
-//             <IoClose />
-//           </button>
-
-//           <iframe
-//             width="90%"
-//             height="450"
-//             src={trailerUrl}
-//             title={movie.title}
-//             allowFullScreen
-//             className="w-full rounded shadow-lg max-w-[320px] sm:max-w-[480px] md:max-w-[720px] lg:max-w-[900px] h-[200px] sm:h-[280px] md:h-[400px]"
-//           />
-//         </div>
-//       ) : (
-//       //  { Ner &&Tailbar blabla}
-//         <>
-//           <Image
-//             src={backdrop_path
-//                 ? `https://image.tmdb.org/t/p/original${backdrop_path}`
-//                 : "/no-image.png"
-//             }
-//             alt={title}
-//             fill
-//             className="object-cover"
-//             priority
-//           />
-
-
-//           <div className="absolute bottom-6 left-6 max-w-lg sm:bottom-6 sm:left-6 max-w-full sm:max-w-lg text-white">
-//             <h1 className="text-sm font-normal sm:text-sm mb-1">Now Playing:</h1>
-//             <h1 className="text-4xl font-bold sm:text-3xl md:text-4xl mb-2">{title}</h1>
-
-//             <div className="flex items-center gap-2 mb-2">
-//               <Image src="/star.png" alt="star" width={20} height={20} />
-//               <p className="text-lg font-semibold sm:text-lg">{vote_average?.toFixed(1)}/10</p>
-//             </div>
-//             <p className="text-sm max-h-32 overflow-hidden">{overview}</p>
-// {/* {Button} */}
-//             <button
-//               onClick={handleTrailerClick}
-//               className="mt-4 sm:text-sm sm:px-4 bg-gray-600 hover:bg-black px-4 py-2 rounded transition-colors font-semibold"
-//             >
-//               {loadingTrailer ? "Loading..." : "Watch Trailer"}
-//             </button>
-
-//             {error && <p className="text-sm text-red-500 mt-2 sm:text-sm">{error}</p>}
-//           </div>
-//         </>
-//       )}
-//     </div>
-    
-//   );
-// };
-// // absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent
-
 
 "use client";
 
 import Image from "next/image";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import AddToListButton from "./List";
+// import AddToListButton from "./List";
 
 type Movie = {
   id: number;
@@ -172,9 +44,8 @@ export const Bigpic = ({ movie }: BigpicProps) => {
 
   return (
     <div className="w-full">
-      {/* HERO / POSTER */}
-      <div className="relative w-full h-[520px] sm:h-[650px] md:h-[720px]">
-        {/* Trailer overlay */}
+      <div className="relative w-full h-130 sm:h-162.5 md:h-180">
+        {/* Trailer */}
         {trailerUrl && (
           <div className="absolute inset-0 bg-black z-50 flex items-center justify-center">
             <button
@@ -187,7 +58,7 @@ export const Bigpic = ({ movie }: BigpicProps) => {
             <iframe
               src={trailerUrl}
               allowFullScreen
-              className="w-[90%] max-w-4xl h-[260px] sm:h-[420px] rounded-lg"
+              className="w-[90%] max-w-4xl h-65 sm:h-105 rounded-lg"
             />
           </div>
         )}
@@ -205,8 +76,7 @@ export const Bigpic = ({ movie }: BigpicProps) => {
           className="object-cover"
         />
 
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
 
         {/* 🖥 DESKTOP DETAIL (POSTER ДОТОР) */}
         <div className="hidden sm:block absolute bottom-10 left-10 max-w-xl text-white">
@@ -231,11 +101,7 @@ export const Bigpic = ({ movie }: BigpicProps) => {
             >
                Watch Trailer
             </button>
-            <AddToListButton movie={movie} />
-
-            <button className="bg-gray-700/80 px-5 py-2 rounded hover:bg-gray-700">
-              + My List
-            </button> 
+            {/* <AddToListButton movie={movie} /> */}
           </div>
         </div>
       </div>
@@ -260,10 +126,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
             className="bg-black text-white px-5 py-2 rounded font-semibold"
           >
              Watch Trailer
-          </button>
-
-          <button className="border border-gray-300 px-5 py-2 rounded">
-            + My List
           </button>
         </div>
       </div>

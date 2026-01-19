@@ -2,9 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Same from "@/app/components/Same"
 import { Button } from "@/components/ui/button";
-import Comment from "@/app/components/Comment"
-import Rating from "@/app/components/Rating";
+import { log } from "console";
+import Comment from "@/app/components/Comment";
 import MovieCrew from "@/app/components/MovieCrew";
+import { IdCard } from "lucide-react";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 export type Movie={
   id: number;
@@ -48,7 +50,6 @@ export const fetchMovieById = async (id: string) => {
   return res.json();
 };
 
-//  export const MovieId = async ({ params }: { params: { id: string } }) => {
   export default async function MoviePage({ params }: Props) {
   const { id } = await params
   const movie = await fetchMovieById(id);
@@ -94,7 +95,7 @@ export const fetchMovieById = async (id: string) => {
 {/* GENRES */}
 {movie.genres?.length > 0 && (
   <div className="flex flex-wrap gap-2 mt-3">
-    {movie.genres.map((genre) => (
+    {movie.genres.map((genre: { id: Key | null | undefined; name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) => (
       <Link
         key={genre.id}
         href={`/genre/${genre.id}`}
@@ -111,8 +112,7 @@ export const fetchMovieById = async (id: string) => {
      <Button className="bg-amber-300 w-20 h-auto">See more</Button>
    </Link>
    <Same movieId={id} />
-   <Comment movieId={id} />
-   <Rating movieId={id}/>
+   <Comment movieId={id}/>
     </div>
   );
 };
