@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaPlay, FaStar } from "react-icons/fa";
-import { TrailerModal } from "./Trailer";
+import { TrailerModal } from "./TrailerModal";
 
 type Movie = {
   id: number;

@@ -1,22 +1,3 @@
-
-//   return (
-//     <div className="p-10">
-//       <h1 className="text-2xl font-bold mb-6"> {id} </h1>
-//       <div className="flex sm:flex-row">
-//         <div className="w-96.75 h-68">
-//          <MovieGenrePage params={Promise.resolve({ id })} />
-//         </div>
-//         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-ful">
-//         {movies.map((movie: any) => (
-//           <MovieCard key={movie.id} movie={movie} />
-//         ))}
-//       </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
 import { MovieCard } from "@/app/components/MovieCard";
 import MovieGenrePage from "@/app/components/MovieGenrePage";
 import { log } from "console";
@@ -53,19 +34,19 @@ export default async function GenreDetailPage({ params }: Props) {
 
   return (
     <div className="p-4 sm:p-6 lg:p-10">
-      <h1 className="text-xl sm:text-2xl font-bold mb-6">
-        Genre ID: {genreName}
+      <h1 className="text-3xl sm:text-2xl font-bold mb-6">
+        Search filter {genreName}
         <div className="border h-full"></div>
       </h1>
       <div className="flex lg:flex-row sm:flex-col">
         <div className="w-full lg:w-72 xl:w-80">
+          <p className="text-2xl font-semibold">Genres</p>
+          <p className="text-base font-normal">See lists of movies by genre</p>
           <MovieGenrePage params={Promise.resolve({ id })} />
         </div>
       <div>
-         <p className="text-sm text-black font-semibold mb-6 flex justify-center">
-          Total movies: {totalMovies.toLocaleString()}
-          
-        </p> 
+         <p className="text-sm text-black font-semibold mb-6 flex justify-center">Total movies: {totalMovies.toLocaleString()}</p> 
+         <p></p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
           {movies.map((movie: any) => (
             <MovieCard key={movie.id} movie={movie} />

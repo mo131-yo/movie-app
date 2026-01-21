@@ -24,9 +24,6 @@ export default async function Home() {
           <HiArrowSmallRight />
         </Button>
       </Link>
-      {/* <Price params={{
-        id: ""
-      }}/> */}
       <Popular />
       <Link
         href="/category/upcoming"

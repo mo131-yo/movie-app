@@ -177,10 +177,8 @@ export default function GenrePage() {
 
   const applyFilter = () => {
     if (selectedGenres.length > 0) {
-      // Олон ID-г таслалаар холбож илгээнэ
       router.push(`/genre/${selectedGenres.join(",")}`);
     } else {
-      // Хэрэв юу ч сонгоогүй бол үндсэн хуудас руу эсвэл жагсаалт руу буцна
       router.push(`/genre`);
     }
     setOpen(false);
@@ -188,7 +186,6 @@ export default function GenrePage() {
 
   return (
     <div className="relative px-6 lg:px-20 py-8">
-      {/* Badge/Button Trigger */}
       <Badge
         onClick={() => setOpen(!open)}
         variant="outline"
@@ -202,7 +199,6 @@ export default function GenrePage() {
         )}
       </Badge>
 
-      {/* Dropdown Menu */}
       {open && (
         <div className="absolute top-24 left-6 lg:left-20 mt-2 w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-2xl p-5 z-50 dark:bg-gray-900 dark:border-gray-700">
           <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Select Genres</h3>

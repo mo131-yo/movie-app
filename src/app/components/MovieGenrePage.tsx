@@ -1,6 +1,7 @@
 "use client";
 
-import { MovieCard } from "@/app/components/MovieCard";
+import { SlArrowRight } from "react-icons/sl";
+import { VscChromeClose } from "react-icons/vsc";
 import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 
@@ -13,14 +14,12 @@ export default function MovieGenrePage() {
   const router = useRouter();
   const params = useParams();
   
-  // params.id нь "28,12" эсвэл "28%7C12" (URL encoded |) байж болно
   const idFromUrl = params?.id ? decodeURIComponent(params.id as string) : "all";
 
   const [genres, setGenres] = useState<Genre[]>([]);
   const [movies, setMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 1. Бүх төрлийг татах
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -36,13 +35,10 @@ export default function MovieGenrePage() {
     fetchGenres();
   }, []);
 
-  // 2. Кинонуудыг татах
   useEffect(() => {
     const fetchMovies = async () => {
       setLoading(true);
       try {
-        // Хэрэв олон сонголттой бол таслалыг | болгож солино (Ингэснээр илүү олон кино гарна)
-        // Хэрэв та заавал хоёуланг нь агуулсан кино харах бол .replace-ийг устгаж болно
         const queryId = idFromUrl === "all" ? "" : idFromUrl.replace(/,/g, "|");
         
         const res = await fetch(
@@ -63,12 +59,11 @@ export default function MovieGenrePage() {
     };
 
     fetchMovies();
-  }, [idFromUrl]); // idFromUrl өөрчлөгдөх бүрт ажиллана
+  }, [idFromUrl]); 
 
   const handleToggleGenre = (genreId: number) => {
-    // URL-аас одоогийн ID-нуудыг массив болгож авах
     let selectedIds = idFromUrl !== "all" 
-      ? idFromUrl.split(/[|,]/) // Таслал эсвэл | байгаа эсэхийг шалгаж салгана
+      ? idFromUrl.split(/[|,]/) 
       : [];
 
     const genreIdStr = String(genreId);
@@ -80,7 +75,6 @@ export default function MovieGenrePage() {
     }
 
     if (selectedIds.length > 0) {
-      // URL руу дамжуулахдаа таслалаар холбоно
       router.push(`/genre/${selectedIds.join(",")}`);
     } else {
       router.push(`/genre/all`);
@@ -91,9 +85,7 @@ export default function MovieGenrePage() {
     <div className="p-6 lg:p-10">
       <div className="flex flex-wrap gap-3 mb-10">
         {genres.map((genre) => {
-          // Идэвхтэй байгааг шалгах
           const isSelected = idFromUrl !== "all" && idFromUrl.split(/[|,]/).includes(String(genre.id));
-          
           return (
             <button
               key={genre.id}
@@ -104,7 +96,12 @@ export default function MovieGenrePage() {
                   : "bg-white text-gray-700 border-gray-200 hover:border-black"
               }`}
             >
-              {genre.name}
+             <div className="flex gap-1">{genre.name}
+               <div className="p-1">
+                <SlArrowRight />
+               </div>
+             </div>
+              {/* <VscChromeClose /> */}
             </button>
           );
         })}

@@ -1,7 +1,6 @@
+import { DynamicPagination } from "@/app/components/DynamicPagination";
 import { MovieCard } from "@/app/components/MovieCard";
 import { fetchfromMovieDb} from "@/app/components/Popular";
-import { fetchfromTopRatedMovieDB} from "@/app/components/Toprated";
-import { fetchfromUpcomingMovieDB } from "@/app/components/Upcoming";
 import { Movie } from "@/app/page";
 
 export default async function Page ({
@@ -15,6 +14,7 @@ export default async function Page ({
         
     return(
       <div>
+        <DynamicPagination totalPage={10}/>
         <div className="text-[30px] flex justify-start font-semibold pt-10 pl-25 ">
             <h2>{movieCategory}</h2>
         </div>

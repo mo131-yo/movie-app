@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
-import { TrailerModal } from "./Trailer"; // Таны өөрийн файл
+import { TrailerModal } from "./TrailerModal";
 
 export default function TrailerSection({ movieId, title }: { movieId: number | string, title: string }) {
   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
@@ -13,7 +13,7 @@ export default function TrailerSection({ movieId, title }: { movieId: number | s
       setLoading(true);
       const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`, // Client талд NEXT_PUBLIC_ байх ёстой
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         },
       });
       const data = await res.json();
@@ -36,13 +36,11 @@ export default function TrailerSection({ movieId, title }: { movieId: number | s
       <button
         onClick={handleWatchTrailer}
         disabled={loading}
-        className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold transition-all active:scale-95 disabled:opacity-50"
+        className="flex items-center bg-white text-black hover:bg-gray-600 hover:text-white px-6 py-3 rounded-4xl transition-all active:scale-95 "
       >
         <FaPlay />
-        {loading ? "Loading..." : "Watch Trailer"}
       </button>
 
-      {/* Таны модаль энд ажиллана */}
       <TrailerModal 
         url={trailerUrl} 
         onClose={() => setTrailerUrl(null)} 
