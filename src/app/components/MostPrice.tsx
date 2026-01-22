@@ -40,7 +40,7 @@ const Price = async ({ params }: { params: { id: string } }) => {
   const movies: Movie[] = await fetchMostprice(resolvedParams.id);
 
   if (!movies || movies.length === 0) {
-    return <div className="p-20 text-center">Илэрц олдсонгүй.</div>;
+    return <div className="p-20 text-center">Not founded</div>;
   }
 
   return (

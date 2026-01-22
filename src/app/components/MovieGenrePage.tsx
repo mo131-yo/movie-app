@@ -87,10 +87,7 @@ export default function MovieGenrePage() {
         {genres.map((genre) => {
           const isSelected = idFromUrl !== "all" && idFromUrl.split(/[|,]/).includes(String(genre.id));
           return (
-            <button
-              key={genre.id}
-              onClick={() => handleToggleGenre(genre.id)}
-              className={`px-4 py-1.5 text-sm border rounded-full transition-all duration-300 ${
+            <button key={genre.id} onClick={() => handleToggleGenre(genre.id)} className={`px-4 py-1.5 text-sm border rounded-full transition-all duration-300 ${
                 isSelected
                   ? "bg-black text-white border-black shadow-md scale-105"
                   : "bg-white text-gray-700 border-gray-200 hover:border-black"
@@ -107,16 +104,10 @@ export default function MovieGenrePage() {
         })}
         
         {idFromUrl !== "all" && (
-          <button 
-            onClick={() => router.push("/genre/all")}
-            className="text-sm text-red-500 font-medium hover:underline px-2"
-          >
-            Reset
-          </button>
+          <button onClick={() => router.push("/genre/all")} className="text-sm text-red-500 font-medium hover:underline px-2">Reset</button>
         )}
       </div>
-
-      <hr className="mb-10 opacity-10" />
+      <div className="mb-10 opacity-10" ></div>
     </div>
   );
 }

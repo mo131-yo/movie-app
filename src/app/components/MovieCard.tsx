@@ -107,12 +107,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
           </div>
         )}
       </motion.div>
-      
-      <TrailerModal 
-        url={trailerUrl} 
-        onClose={() => setTrailerUrl(null)} 
-        title={movie.title} 
-      />
+      <TrailerModal url={trailerUrl} onClose={() => setTrailerUrl(null)} title={movie.title} />
     </>
   );
 };

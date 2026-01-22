@@ -32,30 +32,13 @@ import React from "react";
 
     return (
       <section className="w-full">
-        {/* Title */}
         <div className="px-4 sm:px-8 lg:px-20 pb-4 flex items-center justify-between">
           <h3 className="font-semibold text-lg sm:text-xl lg:text-2xl text-black">
             Upcoming movies
           </h3>
         </div>
-
-        {/* Grid */}
         <div
-          className="
-            grid
-            grid-cols-2
-            sm:grid-cols-3
-            md:grid-cols-4
-            lg:grid-cols-5
-            gap-4
-            sm:gap-6
-            lg:gap-8
-            px-4
-            sm:px-8
-            lg:px-20
-            mb-10
-          "
-        >
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-8 lg:px-20 mb-10">
           {upcomingMovies.slice(0, 10).map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}

@@ -12,7 +12,6 @@ export type Movie = {
   overview: string;
 };
 
-
 export const fetchSearchMovies = async (id: string) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`,
@@ -26,7 +25,6 @@ export const fetchSearchMovies = async (id: string) => {
   const data = await res.json();
   return data.results;
 };
-
 
 const Results = async ({ params }: { params: { id: string } }) => {
   const resolvedParams = await params;

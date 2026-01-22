@@ -28,10 +28,7 @@ export const TrailerModal = ({ url, onClose, title }: TrailerModalProps) => {
             onClick={(e) => e.stopPropagation()}
           >
 
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-white text-4xl z-50 hover:text-red-500 transition-colors drop-shadow-md"
-            >
+            <button onClick={onClose} className="absolute top-4 right-4 text-white text-4xl z-50 hover:text-red-500 transition-colors drop-shadow-md">
               <IoClose />
             </button>
 

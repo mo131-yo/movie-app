@@ -1,5 +1,6 @@
 import React from "react";
 import { MovieCard } from "./MovieCard";
+import { number } from "framer-motion";
 
 export type Movie = {
   id: number;
@@ -10,9 +11,9 @@ export type Movie = {
   overview: string;
 };
 
-export const fetchfromMovieDb = async (category: string) => {
+export const fetchfromMovieDb = async (category: string, page: number = 1) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -23,43 +24,20 @@ export const fetchfromMovieDb = async (category: string) => {
   );
 
   const data = await response.json();
-  return data.results;
+  return data.results || []; 
 };
 
 const Popular = async () => {
-  const movies: Movie[] = await fetchfromMovieDb("popular");
+  const movies: Movie[] = await fetchfromMovieDb("popular", 1);
 
   return (
-
     <div className="w-full">
-      <div className="px-4 sm:px-8 lg:px-20 pb-4 flex items-center justify-between">
-        <h3 className="font-semibold text-lg sm:text-xl lg:text-2xl text-black">
-          Popular movies
-        </h3>
-      </div>
-
-      <div
-        className="
-          grid
-          grid-cols-2
-          sm:grid-cols-3
-          md:grid-cols-4
-          lg:grid-cols-5
-          gap-4
-          sm:gap-6
-          lg:gap-8
-          px-4
-          sm:px-8
-          lg:px-20
-          mb-10
-        "
-      >
-        {movies.slice(0, 10).map((movie) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-8 lg:px-20 mb-10">
+        {movies?.slice(0, 10).map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
     </div>
   );
 };
-
 export default Popular;

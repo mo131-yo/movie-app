@@ -1,122 +1,3 @@
-// "use client";
-
-// import React, { useState, useEffect } from "react";
-// import { useRouter } from "next/navigation"; // Хуудас шилжүүлэхэд хэрэгтэй
-// import { Badge } from "../ui/Badge";
-// import { SlArrowDown } from "react-icons/sl";
-
-// type Genre = {
-//   id: number;
-//   name: string;
-// };
-
-// export default function GenrePage() {
-//   const [genres, setGenres] = useState<Genre[]>([]);
-//   const [selectedGenres, setSelectedGenres] = useState<number[]>([]); // Сонгосон ID-нуудыг хадгалах
-//   const [open, setOpen] = useState(false);
-//   const [loading, setLoading] = useState(false);
-//   const router = useRouter();
-
-//   const getGenres = async () => {
-//     try {
-//       setLoading(true);
-//       const res = await fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", {
-//         headers: {
-//           Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
-//           "Content-Type": "application/json",
-//         },
-//       });
-//       const data = await res.json();
-//       setGenres(data.genres || []);
-//     } catch (error) {
-//       console.error("Genres fetch error:", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     getGenres();
-//   }, []);
-
-//   // Genre дээр дарахад ажиллах функц
-//   const handleGenreClick = (id: number) => {
-//     setSelectedGenres((prev) =>
-//       prev.includes(id) 
-//         ? prev.filter((g) => g !== id) // Байвал хасах
-//         : [...prev, id]               // Байхгүй бол нэмэх
-//     );
-//   };
-
-//   // Шүүх товч дарахад URL руу шилжих
-//   const applyFilter = () => {
-//     if (selectedGenres.length > 0) {
-//       // Сонгосон ID-нуудыг таслалаар холбож (жишээ нь: 12,18,28) илгээнэ
-//       router.push(`/genre/${selectedGenres.join(",")}`);
-//       setOpen(false);
-//     }
-//   };
-
-//   return (
-//     <div className="relative px-6 lg:px-20 py-8">
-//       <Badge
-//         onClick={() => setOpen(!open)}
-//         variant="outline"
-//         className="cursor-pointer shadow text-black text-sm font-medium px-4 py-2 mt-4 rounded-lg mb-4 flex gap-2 items-center"
-//       >
-//         <SlArrowDown />
-//         Genre {selectedGenres.length > 0 && `(${selectedGenres.length})`}
-//       </Badge>
-
-//       {open && (
-//         <div className="absolute top-24 left-6 lg:left-20 mt-2 w-full max-w-md bg-white border rounded-xl shadow-lg p-4 z-50 dark:bg-gray-900">
-//           {loading ? (
-//             <p>Loading...</p>
-//           ) : (
-//             <>
-//               <div className="flex flex-wrap gap-3 max-h-60 overflow-y-auto p-1">
-//                 {genres.map((genre) => {
-//                   const isSelected = selectedGenres.includes(genre.id);
-//                   return (
-//                     <button
-//                       key={genre.id}
-//                       onClick={() => handleGenreClick(genre.id)}
-//                       className={`px-4 py-1.5 text-sm border rounded-full transition ${
-//                         isSelected
-//                           ? "bg-blue-600 text-white border-blue-600"
-//                           : "hover:bg-gray-100 dark:hover:bg-gray-800"
-//                       }`}
-//                     >
-//                       {genre.name}
-//                     </button>
-//                   );
-//                 })}
-//               </div>
-              
-//               <div className="mt-4 pt-4 border-t flex justify-end gap-2">
-//                 <button 
-//                   onClick={() => setSelectedGenres([])}
-//                   className="text-sm text-gray-500 hover:text-gray-700"
-//                 >
-//                   Clear
-//                 </button>
-//                 <button
-//                   onClick={applyFilter}
-//                   disabled={selectedGenres.length === 0}
-//                   className="px-4 py-2 bg-black text-white rounded-lg text-sm disabled:bg-gray-300"
-//                 >
-//                   Apply Filter
-//                 </button>
-//               </div>
-//             </>
-//           )}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -186,11 +67,7 @@ export default function GenrePage() {
 
   return (
     <div className="relative px-6 lg:px-20 py-8">
-      <Badge
-        onClick={() => setOpen(!open)}
-        variant="outline"
-        className="cursor-pointer shadow text-black text-sm font-medium px-4 py-2 mt-4 rounded-lg mb-4 flex gap-2 items-center hover:bg-gray-50 transition-colors"
-      >
+      <Badge onClick={() => setOpen(!open)} variant="outline" className="cursor-pointer shadow text-black text-sm font-medium px-4 py-2 mt-4 rounded-lg mb-4 flex gap-2 items-center hover:bg-gray-50 transition-colors">
         <SlArrowDown className={`transition-transform ${open ? "rotate-180" : ""}`} />
         Genre {selectedGenres.length > 0 && (
           <span className="ml-1 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs">
@@ -213,15 +90,11 @@ export default function GenrePage() {
                 {genres.map((genre) => {
                   const isSelected = selectedGenres.includes(genre.id);
                   return (
-                    <button
-                      key={genre.id}
-                      onClick={() => handleGenreClick(genre.id)}
-                      className={`px-4 py-2 text-sm font-medium border rounded-full transition-all duration-200 ${
+                    <button key={genre.id} onClick={() => handleGenreClick(genre.id)} className={`px-4 py-2 text-sm font-medium border rounded-full transition-all duration-200 ${
                         isSelected
                           ? "bg-blue-600 text-white border-blue-600 shadow-md transform scale-105"
                           : "bg-transparent text-gray-600 border-gray-300 hover:border-blue-400 hover:text-blue-500 dark:text-gray-400"
-                      }`}
-                    >
+                      }`}>
                       {genre.name}
                     </button>
                   );
@@ -229,23 +102,14 @@ export default function GenrePage() {
               </div>
               
               <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
-                <button 
-                  onClick={() => setSelectedGenres([])}
-                  className="text-sm font-medium text-gray-400 hover:text-red-500 transition-colors"
-                >
+                <button onClick={() => setSelectedGenres([])} className="text-sm font-medium text-gray-400 hover:text-red-500 transition-colors">
                   Reset all
                 </button>
                 <div className="flex gap-2">
-                   <button
-                    onClick={() => setOpen(false)}
-                    className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                  >
+                   <button onClick={() => setOpen(false)} className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                     Cancel
                   </button>
-                  <button
-                    onClick={applyFilter}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 dark:shadow-none transition-all"
-                  >
+                  <button onClick={applyFilter} className="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 dark:shadow-none transition-all">
                     Apply Filter
                   </button>
                 </div>

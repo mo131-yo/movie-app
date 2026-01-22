@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -48,10 +47,7 @@ export const Bigpic = ({ movie }: BigpicProps) => {
         {/* Trailer */}
         {trailerUrl && (
           <div className="absolute inset-0 bg-black z-50 flex items-center justify-center">
-            <button
-              onClick={() => setTrailerUrl(null)}
-              className="absolute top-4 right-4 text-white text-3xl"
-            >
+            <button onClick={() => setTrailerUrl(null)} className="absolute top-4 right-4 text-white text-3xl">
               <IoClose />
             </button>
 
@@ -80,23 +76,12 @@ export const Bigpic = ({ movie }: BigpicProps) => {
         <div className="hidden sm:block absolute bottom-10 left-10 max-w-xl text-white">
           <p className="text-xs uppercase opacity-80 mb-1">Now Playing</p>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-3">
-            {movie.title}
-          </h1>
-
-          <span className="text-yellow-400 font-bold mb-3 block">
-            ⭐ {movie.vote_average?.toFixed(1)}
-          </span>
-
-          <p className="text-sm opacity-90 line-clamp-3 mb-4">
-            {movie.overview}
-          </p>
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-3">{movie.title}</h1>
+          <span className="text-yellow-400 font-bold mb-3 block">⭐ {movie.vote_average?.toFixed(1)}</span>
+          <p className="text-sm opacity-90 line-clamp-3 mb-4">{movie.overview}</p>
 
           <div className="flex gap-3">
-            <button
-              onClick={handleTrailerClick}
-              className="bg-white text-black px-5 py-2 rounded font-semibold hover:bg-gray-700 hover:text-white"
-            >
+            <button onClick={handleTrailerClick} className="bg-white text-black px-5 py-2 rounded font-semibold hover:bg-gray-700 hover:text-white">
                Watch Trailer
             </button>
             {/* <AddToListButton movie={movie} /> */}
@@ -119,10 +104,7 @@ export const Bigpic = ({ movie }: BigpicProps) => {
         </p>
 
         <div className="flex gap-3">
-          <button
-            onClick={handleTrailerClick}
-            className="bg-black text-white px-5 py-2 rounded font-semibold"
-          >
+          <button onClick={handleTrailerClick} className="bg-black text-white px-5 py-2 rounded font-semibold">
              Watch Trailer
           </button>
         </div>

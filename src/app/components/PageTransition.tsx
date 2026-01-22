@@ -10,10 +10,7 @@ export const PageTransition = ({ children }: { children: React.ReactNode }) => {
   return (
     <AnimatePresence mode="wait">
       <div key={pathname}>
-        {/* Анимейшн хавтангууд */}
         <Stairs />
-
-        {/* Хуудасны агуулга зөөлөн гарч ирэх хэсэг */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

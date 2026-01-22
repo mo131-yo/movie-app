@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Pagination,
   PaginationContent,
@@ -8,37 +10,45 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 import { usePagination } from "../_hooks/usePagination";
+import { cn } from "@/lib/utils";
 
 type DynamicPaginationProps = {
   totalPages: number
 };
-export const DynamicPagination = ({totalPages}: DynamicPaginationProps)=>{
-  const {currentPage, handleNext, handlePageChange, handlePrev, totalPages }= usePagination();
-  return(
-    <div>
+
+export const DynamicPagination = ({ totalPages }: DynamicPaginationProps) => {
+  const { displayPages, currentPage, handleNext, handlePageChange, handlePrev } = usePagination(totalPages);
+
+  return (
     <Pagination>
-  <PaginationContent>
-    {currentPage > 1 &&(
-    <PaginationItem>
-      <PaginationPrevious onClick={handlePrev} />
-    </PaginationItem>
-    )}
-
-    <PaginationItem>
-      <PaginationLink onClick={handlePageChange}>1</PaginationLink>
-    </PaginationItem>
-
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-{ currentPage < totalPages && (
-    <PaginationItem>
-      <PaginationNext onClick={handleNext} />
-    </PaginationItem>
-    )}
-
-  </PaginationContent>
-</Pagination>
-    </div>
+      <PaginationContent>
+        {currentPage > 1 && (
+          <PaginationItem className="cursor-pointer">
+            <PaginationPrevious onClick={handlePrev} />
+          </PaginationItem>
+        )}
+        {displayPages.map((pageNumber) => (
+          <PaginationItem key={pageNumber} className="cursor-pointer">
+            <PaginationLink 
+              onClick={() => handlePageChange(pageNumber)} 
+              isActive={pageNumber === currentPage}
+              className={cn(pageNumber === currentPage && "bg-accent text-accent-foreground")}
+            >
+              {pageNumber}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        {currentPage < totalPages - 1 && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
+        {currentPage < totalPages && (
+          <PaginationItem className="cursor-pointer">
+            <PaginationNext onClick={handleNext} />
+          </PaginationItem>
+        )}
+      </PaginationContent>
+    </Pagination>
   )
 }
