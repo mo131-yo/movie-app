@@ -83,18 +83,7 @@ export const fetchMovieById = async (id: string) => {
      </div>
     </div>
 <div className="flex gap-8 justify-center ">
-   {/* <Image
-  src={
-    movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : "/no-image.png"
-  }
-  alt={`Poster of ${movie.title ?? "movie"}`}
-    width={300}
-  height={450}
-  className="w-72.5 h-107"
-/> */}
-<div className="flex gap-8 justify-center">
+  <div className="flex gap-8 justify-center">
     <Image
       src={
         movie.poster_path

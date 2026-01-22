@@ -1,59 +1,3 @@
-// "use client"
-// import React from 'react'
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationEllipsis,
-//   PaginationItem,
-//   PaginationLink,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from "@/components/ui/pagination"
-// import { usePagination } from '../_hooks/usePagination';
-// import { cn } from '@/lib/utils';
-
-// type PaginationProps ={
-//     totalPage: number;
-// }
-// export const DynamicPagination = ({ totalPage }: PaginationProps) => {
-//   const {displayPages, currentPage, handleNext, handlePrev, handlePageChange } = usePagination();
-
-//   return (
-//     <Pagination>
-//       <PaginationContent>
-//         { currentPage > 1 && (
-//         <PaginationItem>
-//           <PaginationPrevious onClick={handlePrev}/>
-//         </PaginationItem>
-//         )}
-//         {displayPages.map((pageNumber)=>(
-//         <PaginationItem key={pageNumber}>
-//           <PaginationLink onClick={handlePageChange(pageNumber)} className={cn("cursor-pointer",pageNumber === currentPage && "bg-gray-400")}>
-//             {pageNumber}</PaginationLink>
-//         </PaginationItem>
-//         ))}
-//         {currentPage < totalPage && (
-//         <PaginationItem>
-//           <PaginationEllipsis />
-//         </PaginationItem>
-//         )}
-//         { currentPage < totalPage && (
-//         <PaginationItem>
-//           <PaginationNext onClick={handleNext}/>
-//         </PaginationItem>
-//         )}
-//           <PaginationItem>
-//           <PaginationNext onClick={handleNext}/>
-//         </PaginationItem>
-//       </PaginationContent>
-//     </Pagination>
-//   )
-// }
-
-
-"use client";
-
-import React from "react";
 import {
   Pagination,
   PaginationContent,
@@ -62,68 +6,39 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/components/ui/pagination"
 import { usePagination } from "../_hooks/usePagination";
-import { cn } from "@/lib/utils";
 
-type PaginationProps = {
-  totalPage: number;
+type DynamicPaginationProps = {
+  totalPages: number
 };
-
-export const DynamicPagination = ({ totalPage }: PaginationProps) => {
-  const {
-    displayPages,
-    currentPage,
-    handleNext,
-    handlePrev,
-    handlePageChange,
-  } = usePagination(totalPage);
-
-  return (
+export const DynamicPagination = ({totalPages}: DynamicPaginationProps)=>{
+  const {currentPage, handleNext, handlePageChange, handlePrev, totalPages }= usePagination();
+  return(
+    <div>
     <Pagination>
-      <PaginationContent>
-        {/* Previous */}
-        {currentPage > 1 && (
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={handlePrev}
-              className="cursor-pointer"
-            />
-          </PaginationItem>
-        )}
+  <PaginationContent>
+    {currentPage > 1 &&(
+    <PaginationItem>
+      <PaginationPrevious onClick={handlePrev} />
+    </PaginationItem>
+    )}
 
-        {/* Page numbers */}
-        {displayPages.map((pageNumber) => (
-          <PaginationItem key={pageNumber}>
-            <PaginationLink
-              onClick={() => handlePageChange(pageNumber)}
-              className={cn(
-                "cursor-pointer",
-                pageNumber === currentPage && "bg-gray-400 text-white"
-              )}
-            >
-              {pageNumber}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
+    <PaginationItem>
+      <PaginationLink onClick={handlePageChange}>1</PaginationLink>
+    </PaginationItem>
 
-        {/* Ellipsis */}
-        {displayPages[displayPages.length - 1] < totalPage && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+{ currentPage < totalPages && (
+    <PaginationItem>
+      <PaginationNext onClick={handleNext} />
+    </PaginationItem>
+    )}
 
-        {/* Next */}
-        {currentPage < totalPage && (
-          <PaginationItem>
-            <PaginationNext
-              onClick={handleNext}
-              className="cursor-pointer"
-            />
-          </PaginationItem>
-        )}
-      </PaginationContent>
-    </Pagination>
-  );
-};
+  </PaginationContent>
+</Pagination>
+    </div>
+  )
+}

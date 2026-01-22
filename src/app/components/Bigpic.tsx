@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-// import AddToListButton from "./List";
+import TrailerSection from "./TrailerSection";
 
 type Movie = {
   id: number;
@@ -62,7 +62,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
             />
           </div>
         )}
-
         {/* Background image */}
         <Image
           src={
@@ -75,7 +74,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
           priority
           className="object-cover"
         />
-
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
 
         {/* 🖥 DESKTOP DETAIL (POSTER ДОТОР) */}

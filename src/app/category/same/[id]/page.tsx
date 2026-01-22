@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { MovieCard } from "@/app/components/MovieCard";
-import {DynamicPagination} from "@/app/components/DynamicPagination"
+import {DynamicPagination} from "@/app/components/DynamicPagination";
 
 export type Movie = {
   id: number;
@@ -22,16 +22,11 @@ export const fetchSearchMovies = async (id: string) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_API_TOKEN}`,
       },
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch movies');
-  }
-
+    });
   const data = await res.json();
   return data.results;
 };
+
 
 const Results = async ({ params }: { params: { id: string } }) => {
   const resolvedParams = await params;
@@ -40,9 +35,9 @@ const Results = async ({ params }: { params: { id: string } }) => {
   if (!movies || movies.length === 0) {
     return <div className="p-20 text-center">Tiim kino baikhgui</div>;
   }
-
   return (
     <div className='pb-20'>
+
       <h3 className="font-semibold text-2xl text-black pr-20 pl-20 pb-5">More Like This</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pr-20 pl-20 gap-8">
         {movies.map((movie) => (
@@ -50,7 +45,7 @@ const Results = async ({ params }: { params: { id: string } }) => {
         ))}
       </div>
       <div className='pt-10'>
-        <DynamicPagination totalPage={10}/>
+        <DynamicPagination totalPages={10}/>
       </div>
     </div>
   );
