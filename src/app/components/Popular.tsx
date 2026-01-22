@@ -12,19 +12,24 @@ export type Movie = {
 };
 
 export const fetchfromMovieDb = async (category: string, page: number = 1) => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_API_TOKEN}`,
-      },
-      next: { revalidate: 60 },
-    }
-  );
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_API_TOKEN}`,
+        },
+      }
+    );
 
-  const data = await response.json();
-  return data.results || []; 
+    if (!response.ok) return [];
+
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 const Popular = async () => {
@@ -33,9 +38,13 @@ const Popular = async () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-8 lg:px-20 mb-10">
-        {movies?.slice(0, 10).map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {movies?.length > 0 ? (
+          movies.slice(0, 10).map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))
+        ) : (
+          <p>Tiim kino olsongui</p>
+        )}
       </div>
     </div>
   );
