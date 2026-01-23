@@ -35,7 +35,7 @@ const fetchMovieCharacters = async (id: string) => {
 
 const Avatar = ({ src, name }: { src: string | null; name: string }) => (
   <div className="text-center w-24">
-    <p className="text-xs mt-2 text-black">{name}</p>
+    <p className="text-xs mt-2 text-black dark:text-white">{name}</p>
   </div>
 );
 
@@ -48,10 +48,10 @@ const MovieCrew = async ({ movieId }: Props) => {
   );
 
   return (
-    <div className="mt-10 space-y-10">
+    <div className="mt-10 space-y-10 pl-10">
       {director && (
         <div className="flex items-start gap-6">
-          <h3 className="w-28 text-base font-bold text-black">Director</h3>
+          <h3 className="w-28 text-base font-bold text-black dark:text-white">Director</h3>
           <Avatar src={director.profile_path} name={director.name} />
         </div>
       )}
@@ -61,8 +61,8 @@ const MovieCrew = async ({ movieId }: Props) => {
       {/* Writers */}
       {writers.length > 0 && (
         <div className="flex items-start gap-6">
-          <h3 className="w-28 font-bold text-black">Writers</h3>
-          <div className="flex gap-6 flex-wrap">
+          <h3 className="w-28 font-bold text-black dark:text-white">Writers</h3>
+          <div className="flex gap-6 flex-wrap dark:text-white">
             {writers.slice(0, 3).map((writer) => (
                  <Avatar
                 key={writer.id}
@@ -78,8 +78,8 @@ const MovieCrew = async ({ movieId }: Props) => {
 
       {cast.length > 0 && (
         <div className="flex items-start gap-6">
-          <h3 className="w-28 font-bold text-black">Star</h3>
-          <div className="flex gap-8 flex-wrap">
+          <h3 className="w-28 font-bold text-black dark:text-white">Star</h3>
+          <div className="flex gap-8 flex-wrap dark:text-white">
             {cast.slice(0, 4).map((writer) => (
                  <Avatar
                 key={writer.id}

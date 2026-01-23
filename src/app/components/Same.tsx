@@ -42,14 +42,18 @@ const Same = async ({ movieId }: SameProps) => {
   }
 
   return (
-    <div className="mb-10">
-      <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-6 lg:gap-8 px-6">
-        {sameMovies.slice(0, 5).map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </div>
+    <div className="mb-10 px-6">
+  <div className="hidden sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-6 lg:gap-8">
+    {sameMovies.slice(0, 5).map((movie) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ))}
+  </div>
+  <div className="grid grid-cols-2 gap-4 sm:hidden">
+    {sameMovies.slice(0, 2).map((movie) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ))}
+  </div>
+</div>
   );
 };
 

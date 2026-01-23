@@ -39,7 +39,7 @@ export const SearchResult = ({ keyword, results, onClose }: Props) => {
             <p className="font-medium text-sm">{movie.title}</p>
             <p className="text-xs text-gray-500">{movie.release_date?.split("-")[0]}</p>
           </div>
-          <Button size="sm" variant="secondary" className="hover:bg-amber-200">
+          <Button size="sm" variant="secondary" className="hover:bg-gray-300 dark:hover:bg-white dark:hover:text-black">
             See more
           </Button>
         </Link>

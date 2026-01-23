@@ -89,7 +89,7 @@ export default function MovieGenrePage() {
           return (
             <button key={genre.id} onClick={() => handleToggleGenre(genre.id)} className={`px-4 py-1.5 text-sm border rounded-full transition-all duration-300 ${
                 isSelected
-                  ? "bg-black text-white border-black shadow-md scale-105"
+                  ? "bg-black text-white border-black shadow-md scale-105 dark:bg-blue-600"
                   : "bg-white text-gray-700 border-gray-200 hover:border-black"
               }`}
             >

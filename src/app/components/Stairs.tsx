@@ -28,7 +28,7 @@ export const Stairs = () => {
             ease: "easeInOut",
             delay: reverseIndex(index) * 0.1,
           }}
-          className="fixed inset-0 w-[16.7vw] bg-red-600 z-[10000] pointer-events-none"
+          className="fixed inset-0 w-[16.7vw] bg-red-600 z-10000 pointer-events-none"
           style={{ left: `${index * 16.7}vw` }}
         />
       ))}

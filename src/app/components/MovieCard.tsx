@@ -61,7 +61,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
           zIndex: 50,
           transition: { duration: 0.3 }
         }}
-        className="relative w-full sm:w-48 md:w-56 lg:w-60 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-900 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-red-600/50 transition-shadow duration-300"
+        className="relative w-full sm:w-48 md:w-56 lg:w-60 rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-red-600/50 dark:hover:shadow-blue-700/50 transition-shadow duration-300"
       >
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 100 100" preserveAspectRatio="none">
           <motion.rect
@@ -72,7 +72,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
         </svg>
 
         <Link href={`/movie/${movie.id}`}>
-          <div className="relative aspect-[2/3] w-full">
+          <div className="relative aspect-2/3 w-full">
             <Image
               src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/no-image.png"}
               alt={movie.title} fill className="object-cover"
@@ -91,7 +91,7 @@ export const MovieCard = ({ movie }: { movie: Movie }) => {
         <button
           onClick={handleFetchTrailer}
           disabled={loading}
-          className="w-full py-2 bg-gray-100 dark:bg-gray-800 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center gap-2 text-xs font-bold disabled:opacity-50"
+          className="w-full py-2 bg-gray-100 dark:bg-gray-800 hover:bg-red-600 dark:hover:bg-blue-900 hover:text-white transition-all flex items-center justify-center gap-2 text-xs font-bold disabled:opacity-50"
         >
           {loading ? (
             <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-3 h-3 border-2 border-red-500 border-t-transparent rounded-full" />

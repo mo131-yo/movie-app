@@ -62,7 +62,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         </h2>
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex-1">
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
@@ -71,7 +71,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
               <DynamicPagination totalPages={totalPages} />
             </div>
           </div>
-          <div className="w-full lg:w-100 ">
+          <div className="w-full lg:w-90">
              <MovieGenrePage />
           </div>
         </div>  

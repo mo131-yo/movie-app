@@ -90,21 +90,21 @@ export const Bigpic = ({ movie }: BigpicProps) => {
       </div>
 
       {/* 📱 MOBILE DETAIL (POSTER ДООР) */}
-      <div className="block sm:hidden px-4 py-6 bg-white text-black">
+      <div className="block sm:hidden px-4 py-6 bg-white text-black dark:bg-gray-700">
         <p className="text-xs uppercase opacity-70 mb-1">Now Playing</p>
 
-        <h1 className="text-2xl font-bold mb-2">{movie.title}</h1>
+        <h1 className="text-2xl font-bold mb-2 dark:text-white">{movie.title}</h1>
 
         <span className="text-yellow-500 font-bold mb-3 block">
           ⭐ {movie.vote_average?.toFixed(1)}
         </span>
 
-        <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+        <p className="text-sm text-gray-700 mb-4 leading-relaxe dark:text-white">
           {movie.overview}
         </p>
 
         <div className="flex gap-3">
-          <button onClick={handleTrailerClick} className="bg-black text-white px-5 py-2 rounded font-semibold">
+          <button onClick={handleTrailerClick} className="bg-black text-white px-5 py-2 rounded font-semibold dark:hover:bg-white dark:hover:text-black">
              Watch Trailer
           </button>
         </div>
