@@ -87,7 +87,7 @@
           </div>
           <div>
 <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 p-4 lg:p-10 w-full items-stretch">
-  
+
   <div className="shrink-0 w-full sm:w-64 lg:w-80">
     <div className="relative aspect-2/3 overflow-hidden hidden sm:block rounded-2xl shadow-2xl border-2 border-white/10">
       <Image
@@ -147,7 +147,18 @@
   </div>
 </div>
     <div className="mt-2 mr-10 ml-10 hidden lg:block">
-      <h1 className="text-2xl sm:text-4xl font-bold text-white leading-tight">
+       <div className="flex flex-wrap gap-2">
+            {movie.genres?.map((genre: any) => (
+              <Link
+                key={genre.id}
+                href={`/genre/${genre.id}`}
+                className="px-3 py-1 text-xs border border-gray-600 rounded-full hover:bg-gray-600 hover:text-white dark:bg-white dark:text-black dark:hover:bg-blue-700 dark:hover:text-white transition-colors "
+              >
+                {genre.name}
+              </Link>
+            ))}
+          </div>
+      <h1 className="text-2xl sm:text-4xl font-bold text-white leading-tight dark:hidden">
         {movie.title}
       </h1>
       <p className="text-gray-400 mt-2 line-clamp-3">
@@ -183,25 +194,23 @@
           </div>
 
           <div className="w-51">
-            <h2 className="text-xl font-bold mb-2 dark:text-white hidden lg:block">Overview</h2>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
               {movie.overview}
             </p>
           </div>
     </div>
      </div>
-
       <div className="mt-8">
     <MovieCrew movieId={id}/>
 
     <div className="flex justify-between items-center pl-10 pr-10 pt-18 pb-4 border-b dark:border-gray-800">
       <h3 className="font-bold text-lg sm:text-2xl dark:text-white">More like this</h3>
-      <Link href={`/category/same/${id}`} className="flex items-center justify-center gap-1 text-sm font-medium bg-white text-black rounded w-30">
-        See more <span className="text-lg">→</span>
+      <Link href={`/category/same/${id}`} className="flex items-center justify-center gap-1 text-sm font-medium bg-white text-black rounded w-30 h-9 hover:bg-amber-300 dark:hover:bg-blue-600 dark:hover:text-white">
+        See more
       </Link>
     </div>
 
-    <div className="mt-16">
+    <div className="mt-16 px-10">
       <Same movieId={id} />
     </div>
   </div>
