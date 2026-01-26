@@ -30,7 +30,7 @@ export default function TrailerSection({ movieId, title }: { movieId: number | s
       setLoading(false);
     }
   };
-
+  
   return (
     <>
       <button onClick={handleWatchTrailer} disabled={loading} className="flex items-center bg-white text-black hover:bg-gray-600 hover:text-white px-6 py-3 rounded-4xl transition-all active:scale-95 ">

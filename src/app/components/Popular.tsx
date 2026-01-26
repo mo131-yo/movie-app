@@ -35,7 +35,7 @@ const Popular = async () => {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-8 lg:px-20 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pt-10 pr-10 pl-10 gap-8">
        {movies && movies.length > 0 ? (
       movies.slice(0, 10).map((movie) => (
        <MovieCard key={movie.id} movie={movie} />
