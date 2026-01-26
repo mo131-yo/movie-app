@@ -98,7 +98,6 @@ export default function MovieGenrePage() {
                 <SlArrowRight />
                </div>
              </div>
-              {/* <VscChromeClose /> */}
             </button>
           );
         })}

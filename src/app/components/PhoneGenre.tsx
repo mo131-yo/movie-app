@@ -10,7 +10,7 @@ type Genre = {
   name: string;
 };
 
-export default function GenrePage() {
+export default function Phonegenre() {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
   const [open, setOpen] = useState(false);
@@ -69,10 +69,9 @@ export default function GenrePage() {
     <div className="relative left-30 px-35 lg:px-0 py-8">
       <Badge onClick={() => setOpen(!open)} variant="outline" className="cursor-pointer relative right-30 shadow text-black text-sm font-medium px-4 py-2 mt-4 rounded-lg mb-4 flex gap-2 items-center hover:bg-gray-50 transition-colors dark:bg-gray-800 dark:text-white">
         <SlArrowDown className={`transition-transform ${open ? "rotate-180" : ""}`} />
-        Genre 
       </Badge>
       {open && (
-        <div className="absolute top-24 mt-2 right-2 w-120 bg-white border border-gray-200 rounded-2xl shadow-2xl p-5 z-50 dark:bg-gray-900 dark:border-gray-700">
+        <div className="absolute top-24 mt-2 right-2 w-100  bg-white border border-gray-200 rounded-2xl shadow-2xl p-5 z-50 dark:bg-gray-900 dark:border-gray-700">
           <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Select Genres</h3>
           
           {loading ? (

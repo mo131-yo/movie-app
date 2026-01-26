@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import TrailerSection from "./TrailerSection";
 
 type Movie = {
   id: number;
@@ -58,7 +57,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
             />
           </div>
         )}
-        {/* Background image */}
         <Image
           src={
             movie.backdrop_path
@@ -72,7 +70,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
 
-        {/* 🖥 DESKTOP DETAIL (POSTER ДОТОР) */}
         <div className="hidden sm:block absolute bottom-10 left-10 max-w-xl text-white">
           <p className="text-xs uppercase opacity-80 mb-1">Now Playing</p>
 
@@ -89,7 +86,6 @@ export const Bigpic = ({ movie }: BigpicProps) => {
         </div>
       </div>
 
-      {/* 📱 MOBILE DETAIL (POSTER ДООР) */}
       <div className="block sm:hidden px-4 py-6 bg-white text-black dark:bg-gray-700">
         <p className="text-xs uppercase opacity-70 mb-1">Now Playing</p>
 

@@ -34,9 +34,7 @@ const fetchMovieCharacters = async (id: string) => {
 };
 
 const Avatar = ({ src, name }: { src: string | null; name: string }) => (
-  <div className="text-center w-24">
     <p className="text-xs mt-2 text-black dark:text-white">{name}</p>
-  </div>
 );
 
 const MovieCrew = async ({ movieId }: Props) => {
@@ -58,7 +56,6 @@ const MovieCrew = async ({ movieId }: Props) => {
 
       <hr className="border-gray-700" />
 
-      {/* Writers */}
       {writers.length > 0 && (
         <div className="flex items-start gap-6">
           <h3 className="w-28 font-bold text-black dark:text-white">Writers</h3>

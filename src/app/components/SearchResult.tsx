@@ -20,7 +20,7 @@ export const SearchResult = ({ keyword, results, onClose }: Props) => {
   if (!keyword || results.length === 0) return null;
 
   return (
-    <div className="absolute z-50 w-94.75 bg-white dark:bg-gray-900 rounded-xl shadow-lg mt-2 p-3 space-y-2">
+    <div className="absolute left-10 z-50 w-94.75 bg-white dark:bg-gray-900 rounded-xl shadow-lg p-3 space-y-2">
       {results.slice(0, 5).map((movie) => (
         <Link key={movie.id} href={`/movie/${movie.id}`} onClick={onClose} className="flex gap-3 items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
           {movie.poster_path ? (

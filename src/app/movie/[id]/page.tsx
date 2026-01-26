@@ -64,9 +64,9 @@
 
         return (
         <div>
-          <div className="flex flex-row justify-around ">
+          <div className="flex flex-row justify-between px-20 pt-10 gap-10">
             <div className="flex flex-col">
-            <h1 className=" w-[211px] text-2xl sm:text-3xl font-bold dark:text-white">{movie.title}</h1>
+            <h1 className=" w-52 text-2xl sm:text-3xl font-bold sm:w-100 dark:text-white">{movie.title}</h1>
             <div className="flex items-center font-medium gap-2 text-xs sm:text-sm text-gray-500 mt-1">
               <p>{movie.release_date}</p>
               <span>•</span>
@@ -86,50 +86,10 @@
           </div>
           </div>
           <div>
-{/* 
-<div className="flex flex-col sm:flex-row gap-6 lg:gap-10 p-4 lg:p-10 hidden lg:block">
-  <div className="mx-auto lg:mx-0">
-    <div className="relative w-25 sm:w-60 lg:w-72 aspect-[2/3] overflow-hidden rounded-2xl shadow-2xl">
-      <Image
-        src={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-            : "/no-image.png"
-        }
-        alt={movie.title}
-        fill
-        className="object-cover"
-        />
-    </div>
-        </div>
-
-  <div className="flex-1 flex flex-col gap-4 hidden lg:block">
-    <div className="relative w-190 h-107 sm:h-90 lg:h-107 overflow-hidden rounded-2xl group">
-      <Image
-        src={
-          movie.backdrop_path
-            ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-            : "/no-image.png"
-        }
-        alt={movie.title}
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 flex items-end">
-        <div className="flex flex-col items-center gap-2 cursor-pointer">
-            <TrailerSection movieId={movie.id} title={movie.title} />
-          <span className="px-4 py-1 rounded-full text-sm font-medium">
-            Play Trailer
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> */}
 <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 p-4 lg:p-10 w-full items-stretch">
   
-  <div className="flex-shrink-0 w-full sm:w-64 lg:w-80">
-    <div className="relative aspect-[2/3] overflow-hidden hidden sm:block rounded-2xl shadow-2xl border-2 border-white/10">
+  <div className="shrink-0 w-full sm:w-64 lg:w-80">
+    <div className="relative aspect-2/3 overflow-hidden hidden sm:block rounded-2xl shadow-2xl border-2 border-white/10">
       <Image
         src={
           movie.poster_path
@@ -143,7 +103,7 @@
     </div>
   </div>
 
-  <div className="hidden sm:block sm:flex flex-1 relative overflow-hidden rounded-2xl group shadow-lg min-h-[300px] lg:min-h-full">
+  <div className="hidden sm:block flex-1 relative overflow-hidden rounded-2xl group shadow-lg min-h-75 lg:min-h-full">
     <Image
       src={
         movie.backdrop_path
@@ -155,7 +115,7 @@
       className="object-cover transition-transform duration-500 group-hover:scale-105"
     />
     
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 lg:p-10">
+    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 lg:p-10">
       <div className="flex items-center gap-4 cursor-pointer">
           <TrailerSection movieId={movie.id} title={movie.title} />
         <div className="flex flex-col">
@@ -170,7 +130,6 @@
     </div>
   </div>
 
-  {/* Гар утсанд зориулсан Backdrop (Хэрэв утсан дээр тусад нь харуулмаар байвал) */}
   <div className="sm:hidden relative w-full aspect-video rounded-xl overflow-hidden">
      <Image
         src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -178,7 +137,7 @@
         fill
         className="object-cover"
       />
-       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 lg:p-10">
+       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 lg:p-10">
       <div className="flex items-center gap-4 cursor-pointer">
           <TrailerSection movieId={movie.id} title={movie.title} />
         <div className="flex flex-col">
@@ -211,7 +170,6 @@
       />
     </div>
       <div className="w-50 pl-10">
-          {/* Genres */}
           <div className="flex flex-wrap gap-2 mb-4">
             {movie.genres?.map((genre: any) => (
               <Link
@@ -224,7 +182,6 @@
             ))}
           </div>
 
-          {/* Overview */}
           <div className="w-51">
             <h2 className="text-xl font-bold mb-2 dark:text-white hidden lg:block">Overview</h2>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">

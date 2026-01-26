@@ -78,7 +78,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       </div>
     );
   } catch (error) {
-    return <p className="text-center mt-10 text-red-500">Failed.</p>;
+    return <p className="text-center mt-10 text-red-500">Failed</p>;
   }
 };
 
